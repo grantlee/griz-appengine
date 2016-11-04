@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Members Page</title>
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document.body).on('click', '.add-new-member', function() {
+                $('.ui.modal').modal('show');
+            });
+            $(document.body).on('click', '.new-member-btn', function() {
+                $('#new-member-form').submit();
+            });
+            $(document.body).on('click', '.view-member-btn', function() {
+                window.location.href = $(this).data('href');
+            });
+            $('select.dropdown').dropdown();
+
+            $(document.body).on('click', '.save-member-btn', function() {
+                var parentEl = $(this).closest(".member-entity");
+                var id = parentEl.data("member-id");
+                var memberData = {
+                    id: id
+                };
+                $.each(parentEl.find("[data-member-field]"), function(idx, item) {
+                    memberData[$(this).data('member-field')] = $(this).val();
+                });
+
+                $.post("/members", memberData).done(function() {
+                    window.location.reload();
+                });
+            });
+
+        });
+    </script>
+</head>
+<body class="site pushable members">
+    <div class="pusher">
+        <h1 class="ui header">Members Page</h1>
+        <div class="ui secondary  menu">
+            <a href="/" class="item">Home</a>
+            <a class="item active">Members</a>
+        </div>
+
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Members</th>
+                <th colspan="5"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#entities}}
+                <tr class="member-entity">
+                    <td>
+                        <div class="ui labeled input">
+                            <a class="ui label">Name</a>
+                            <input type="text" name="name" id="name-{{key.id}}" value="{{data.name}}" data-member-field="name" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ui labeled input">
+                            <a class="ui label">Title</a>
+                            <input type="title" name="title" id="title-{{key.id}}" value="{{data.title}}" data-member-field="title" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ui labeled input">
+                            <a class="ui label">Email</a>
+                            <input type="text" name="email" id="email-{{key.id}}" value="{{data.email}}" data-member-field="email" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ui labeled input">
+                            <a class="ui label">Gender</a>
+                            <select class="dropdown" size="1" name="gender" id="gender-{{key.id}}" data-member-field="gender">
+                                <option value="">Not specified</option>
+                                <option value="male"{{#data.isGenderMale}} selected="selected"{{/data.isGenderMale}}>Male</option>
+                                <option value="female"{{#data.isGenderFemale}} selected="selected"{{/data.isGenderFemale}}>Female</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td width="100%" nowrap="nowrap">
+                        <input type="hidden" name="id" value="{{key.id}}" data-member-field="id" />
+                        <button class="green ui button save-member-btn" type="button"> Save </button>
+                        <button class="blue ui button view-member-btn" type="button" data-href="/members/{{key.id}}"> View </button>
+                    </td>
+                </tr>
+            {{/entities}}
+            </tbody>
+        </table>
+
+        <div class="ui divider"></div>
+        <button class="ui button add-new-member">
+            <i class="icon user"></i>
+            Add New Member
+        </button>
+    </div>
+
+
+
+<div class="ui modal member-entity">
+    <i class="close icon"></i>
+    <div class="header">
+        New Member
+    </div>
+    <div class="image content">
+        <table class="ui celled table">
+            <tr>
+                <td>
+                    <div class="ui labeled input">
+                        <a class="ui label">Name</a>
+                        <input type="text" name="name" id="name" placeholder="Name" data-member-field="name" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="ui labeled input">
+                        <a class="ui label">Title</a>
+                        <input type="text" name="title" id="title" placeholder="Title" data-member-field="title" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="ui labeled input">
+                        <a class="ui label">Email</a>
+                        <input type="text" name="email" id="email" placeholder="Email Address" data-member-field="email" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="ui labeled input">
+                        <a class="ui label">Gender</a>
+                        <select class="dropdown" size="1" name="gender" id="gender" data-member-field="gender">
+                            <option value="">Not specified</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="actions">
+        <div class="ui black deny button">
+            Cancel
+        </div>
+        <div class="ui positive right labeled icon button save-member-btn">
+            Save
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+</body>
+</html>

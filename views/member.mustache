@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Member Page</title>
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document.body).on('click', '.add-new-member', function() {
+                $('.ui.modal').modal('show');
+            });
+            $(document.body).on('click', '.new-member-btn', function() {
+                $('#new-member-form').submit();
+            });
+            $(document.body).on('click', '.view-member-btn', function() {
+                window.location.href = $(this).data('href');
+            });
+        });
+    </script>
+</head>
+<body class="site pushable members">
+<div class="pusher">
+    <h1 class="ui header">Member Page</h1>
+    <div class="ui secondary menu">
+        <a href="/" class="item">Home</a>
+        <a href="/members" class="item">Members</a>
+    </div>
+
+    {{#entity}}
+        <div class="ui card">
+            <div class="image">
+                {{#data.isGenderMale}}
+                <img src="/images/matthew.png" />
+                {{/data.isGenderMale}}
+                {{#data.isGenderFemale}}
+                    <img src="/images/kristy.png" />
+                {{/data.isGenderFemale}}
+            </div>
+            <div class="content">
+                <a class="header">{{data.name}}</a>
+                <div class="meta">
+                    <span class="date">{{data.title}}</span>
+                </div>
+                <div class="description">
+                    Please email me at: <a href="mailto:{{data.email}}">{{data.email}}</a>
+                </div>
+            </div>
+            <div class="extra content">
+                <form action="/members" method="post">
+                    <input type="hidden" name="id" value="{{key.id}}" />
+                    <button class="ui button" type="submit" name="delete">Delete</button>
+                </form>
+            </div>
+        </div>
+    {{/entity}}
+</div>
+</body>
+</html>

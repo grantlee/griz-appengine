@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page</title>
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+<body>
+<div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <div class="right item">
+                    <!-- Place this tag where you want the button to render. -->
+                    <a class="github-button" href="https://github.com/grantlee/griz-appengine/archive/master.zip" data-style="mega" aria-label="Download grantlee/griz-appengine on GitHub">Download</a>
+                </div>
+            </div>
+        </div>
+        <div class="ui text container">
+            <h1 class="ui inverted header">{{msg}}</h1>
+            <h2>This is my app. There are many like it, but this one is mine.</h2>
+            <p>Built with Express/Node.js for Google App Engine. It also has the basic CRUD functions for a Members entity stored in Google Cloud Datastore and a few other nice bits...</p>
+            <div class="ui huge primary button"><a href="/members" title="Proceed to the members page!">View Members</a> <i class="right arrow icon"></i></div>
+        </div>
+    </div>
+
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <h3 class="ui header">Logging</h3>
+                    <p>Uses <a href="https://github.com/winstonjs/winston" target="_blank">winston.js</a> to log to App Engine's custom log directory for viewing within the Console.</p>
+                    <h3 class="ui header">Promises</h3>
+                    <p>Uses <a href="https://github.com/kriskowal/q" target="_blank">Q.js</a> to efficiently handle the asynchronous API requests to Cloud Datastore.</p>
+                    <h3 class="ui header">Templates</h3>
+                    <p>Uses <a href="https://github.com/bryanburgers/node-mustache-express" target="_blank">Mustache Express</a> templating engine to generate dynamic HTML views.</p>
+                </div>
+                <div class="six wide right floated column">
+                    <img src="images/tetris.gif" class="ui large bordered rounded image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="center aligned column">
+                    <a href="http://semantic-ui.com/" class="ui huge button" target="_blank">Like the UI?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui inverted vertical footer segment">
+
+        <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">About</h4>
+                    <div class="ui inverted link list">
+                        <a href="https://github.com/grantlee" class="item" target="_blank">GitHub Profile</a>
+                        <a href="https://www.linkedin.com/in/grantklee" class="item" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">External Links</h4>
+                    <div class="ui inverted link list">
+                        <a href="https://cloud.google.com/" class="item" target="_blank">Google Cloud</a>
+                        <a href="http://semantic-ui.com/" class="item" target="_blank">Semantic UI</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">Inspiration</h4>
+                    <p>
+                        This app was inspired by the getting started examples found <a href="https://cloud.google.com/nodejs/">here</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

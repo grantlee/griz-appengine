@@ -91,3 +91,6 @@
 body.members .pusher {
     padding: 1em;
 }
+.members-grid td {
+    white-space: nowrap;
+}

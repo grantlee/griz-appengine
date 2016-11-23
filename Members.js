@@ -20,7 +20,7 @@ module.exports = {
         datastore.runQuery(query, function(err, entities) {
             if (!err && entities && entities.length > 0) {
                 self.addMetadata(entities[0]);
-                deferred.resolve(entities[0]);
+                deferred.resolve(entities[0].data);
             } else {
                 deferred.reject(new Error("Error fetching member."));
             }
@@ -36,10 +36,13 @@ module.exports = {
 
         datastore.runQuery(query, function(err, entities) {
             if (!err && entities) {
+                var members = {};
                 for (var i = 0; i < entities.length; i++) {
-                    self.addMetadata(entities[i]);
+                    var entity = entities[i];
+                    self.addMetadata(entity);
+                    members[entity.key.id] = entity.data;
                 }
-                deferred.resolve(entities);
+                deferred.resolve(members);
             } else {
                 deferred.reject(new Error("Error fetching members."));
             }
@@ -91,8 +94,7 @@ module.exports = {
     },
 
     addMetadata: function(entity) {
-        entity.data.isGenderMale = (entity.data.gender === "male");
-        entity.data.isGenderFemale = (entity.data.gender === "female");
+        entity.data.id = entity.key.id;
     }
 
 

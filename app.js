@@ -57,13 +57,8 @@ app.post('/members', function (req, res) {
 
     } else {
         // handle update or insert
-        var id = req.body.id;
-        var memberData = {
-            name: req.body.name,
-            email: req.body.email,
-            title: req.body.title,
-            gender: req.body.gender
-        };
+        var id = req.body.member.id;
+        var memberData = req.body.member;
         members.saveMember(id, memberData).then(function() {
             res.status(302).redirect("/members");
         }).fail(function(err) {
@@ -74,8 +69,9 @@ app.post('/members', function (req, res) {
 });
 
 app.get('/members', function (req, res) {
-    members.fetchMembers(parseInt(req.params.id)).then(function (entities) {
-        res.status(200).render("members.mustache", { entities: entities });
+    members.fetchMembers().then(function (entities) {
+        res.send(entities);
+
     }).fail(function (err) {
         LOG.error(err.message);
         res.status(500).send(err.message);
@@ -83,12 +79,8 @@ app.get('/members', function (req, res) {
 });
 app.get('/members/:id', function (req, res) {
     members.fetchMemberById(parseInt(req.params.id)).then(function (entity) {
-        if (entity) {
-            res.status(200).render("member.mustache", { entity: entity });
-        } else {
-            LOG.info("Member not found.");
-            res.status(404).send("Member not found.");
-        }
+        res.send(entity);
+
     }).fail(function (err) {
         LOG.error(err.message);
         res.status(500).send("Error fetching member.");

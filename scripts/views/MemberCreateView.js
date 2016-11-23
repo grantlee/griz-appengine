@@ -65,6 +65,7 @@ var MemberCreateView = React.createClass({
                 </div>
                 <div className="description">
                     <table className="ui celled table members-grid">
+                        <tbody>
                         <tr>
                             <td>
                                 <div className="ui labeled input">
@@ -101,6 +102,7 @@ var MemberCreateView = React.createClass({
                                 </div>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

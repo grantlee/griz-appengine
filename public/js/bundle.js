@@ -21736,98 +21736,102 @@ var MemberCreateView = React.createClass({
                         'table',
                         { className: 'ui celled table members-grid' },
                         React.createElement(
-                            'tr',
+                            'tbody',
                             null,
                             React.createElement(
-                                'td',
+                                'tr',
                                 null,
                                 React.createElement(
-                                    'div',
-                                    { className: 'ui labeled input' },
+                                    'td',
+                                    null,
                                     React.createElement(
-                                        'a',
-                                        { className: 'ui label' },
-                                        'Name'
-                                    ),
-                                    React.createElement('input', { type: 'text', value: this.state.name, onChange: function onChange(e) {
-                                            return _this.handleFieldChange({ 'name': e.target.value });
-                                        } })
-                                )
-                            )
-                        ),
-                        React.createElement(
-                            'tr',
-                            null,
-                            React.createElement(
-                                'td',
-                                null,
-                                React.createElement(
-                                    'div',
-                                    { className: 'ui labeled input' },
-                                    React.createElement(
-                                        'a',
-                                        { className: 'ui label' },
-                                        'Title'
-                                    ),
-                                    React.createElement('input', { type: 'text', value: this.state.title, onChange: function onChange(e) {
-                                            return _this.handleFieldChange({ 'title': e.target.value });
-                                        } })
-                                )
-                            )
-                        ),
-                        React.createElement(
-                            'tr',
-                            null,
-                            React.createElement(
-                                'td',
-                                null,
-                                React.createElement(
-                                    'div',
-                                    { className: 'ui labeled input' },
-                                    React.createElement(
-                                        'a',
-                                        { className: 'ui label' },
-                                        'Email'
-                                    ),
-                                    React.createElement('input', { type: 'text', value: this.state.email, onChange: function onChange(e) {
-                                            return _this.handleFieldChange({ 'email': e.target.value });
-                                        } })
-                                )
-                            )
-                        ),
-                        React.createElement(
-                            'tr',
-                            null,
-                            React.createElement(
-                                'td',
-                                null,
-                                React.createElement(
-                                    'div',
-                                    { className: 'ui labeled input' },
-                                    React.createElement(
-                                        'a',
-                                        { className: 'ui label' },
-                                        'Gender'
-                                    ),
-                                    React.createElement(
-                                        'select',
-                                        { className: 'dropdown', value: this.state.gender, size: '1', onChange: function onChange(e) {
-                                                return _this.handleFieldChange({ 'gender': e.target.value });
-                                            } },
+                                        'div',
+                                        { className: 'ui labeled input' },
                                         React.createElement(
-                                            'option',
-                                            { value: '' },
-                                            'Not specified'
+                                            'a',
+                                            { className: 'ui label' },
+                                            'Name'
+                                        ),
+                                        React.createElement('input', { type: 'text', value: this.state.name, onChange: function onChange(e) {
+                                                return _this.handleFieldChange({ 'name': e.target.value });
+                                            } })
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'tr',
+                                null,
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: 'ui labeled input' },
+                                        React.createElement(
+                                            'a',
+                                            { className: 'ui label' },
+                                            'Title'
+                                        ),
+                                        React.createElement('input', { type: 'text', value: this.state.title, onChange: function onChange(e) {
+                                                return _this.handleFieldChange({ 'title': e.target.value });
+                                            } })
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'tr',
+                                null,
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: 'ui labeled input' },
+                                        React.createElement(
+                                            'a',
+                                            { className: 'ui label' },
+                                            'Email'
+                                        ),
+                                        React.createElement('input', { type: 'text', value: this.state.email, onChange: function onChange(e) {
+                                                return _this.handleFieldChange({ 'email': e.target.value });
+                                            } })
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'tr',
+                                null,
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: 'ui labeled input' },
+                                        React.createElement(
+                                            'a',
+                                            { className: 'ui label' },
+                                            'Gender'
                                         ),
                                         React.createElement(
-                                            'option',
-                                            { value: 'male' },
-                                            'Male'
-                                        ),
-                                        React.createElement(
-                                            'option',
-                                            { value: 'female' },
-                                            'Female'
+                                            'select',
+                                            { className: 'dropdown', value: this.state.gender, size: '1', onChange: function onChange(e) {
+                                                    return _this.handleFieldChange({ 'gender': e.target.value });
+                                                } },
+                                            React.createElement(
+                                                'option',
+                                                { value: '' },
+                                                'Not specified'
+                                            ),
+                                            React.createElement(
+                                                'option',
+                                                { value: 'male' },
+                                                'Male'
+                                            ),
+                                            React.createElement(
+                                                'option',
+                                                { value: 'female' },
+                                                'Female'
+                                            )
                                         )
                                     )
                                 )
